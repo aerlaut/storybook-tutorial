@@ -1,0 +1,17 @@
+# .github/workflows/chromatic.yml
+# Name of our action
+name: 'Chromatic Deployment'
+
+# The event that will trigger the action
+on: push
+
+# What the action will do
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v1
+    - run: yarn
+    - uses: chromaui/action@v1
+      with:
+        projectToken: project-token
+        token: ${{ secrets.GITHUB_TOKEN }}
